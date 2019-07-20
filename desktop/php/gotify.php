@@ -103,6 +103,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                     <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Token}}</label>
+                                <div class="col-sm-3">
+                                    <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="token" placeholder="{{Saisir le token}}"/>
+                                </div>
+                            </div>
                         </fieldset>
                     </form>
                 </div>

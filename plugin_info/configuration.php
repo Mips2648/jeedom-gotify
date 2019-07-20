@@ -25,23 +25,10 @@ if (!isConnect()) {
 <form class="form-horizontal">
     <fieldset>
         <div class="form-group">
-            <label class="col-lg-4 control-label">{{Utilisateur}}</label>
+            <label class="col-lg-4 control-label">{{URL}}</label>
             <div class="col-lg-3">
-                <input type="text"  class="configKey form-control" data-l1key="user"/>
+                <input type="text" class="configKey form-control" data-l1key="url" placeholder="http://yourdomain.com:32768"/>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-4 control-label">{{Mot de passe}}</label>
-            <div class="col-lg-3">
-                <input type="password"  class="configKey form-control" data-l1key="pswd"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <span class="col-lg-4">
-            </span>
-            <span class="col-lg-4">
-                {{Veuillez d'abord sauvegarder la configuration}}
-            </span>
         </div>
   </fieldset>
 </form>
