@@ -1,0 +1,20 @@
+{
+	"id" : "gotify",
+	"name" : "Gotify",
+	"description" : "Plugin permettant la connection à un serveur Gotify.",
+	"licence" : "AGPL",
+	"author" : "Mips2648",
+	"require" : "3.0",
+	"category" : "communication",
+	"hasDependency" : false,
+	"hasOwnDeamon" : false,
+	"maxDependancyInstallTime" : 0,
+	"changelog" : "https://mips2648.gitlab.io/gotify/changelog/",
+	"documentation" : "https://mips2648.gitlab.io/gotify/#language#/",
+	"link" : {
+		"forum":"",
+		"video" : ""
+	},
+	"language" : ["fr_FR", "en_US"],
+	"compatibility" : ["miniplus","smart","rpi","docker","diy","mobile"]
+}
