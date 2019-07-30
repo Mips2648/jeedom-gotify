@@ -9,8 +9,8 @@
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://mips2648.gitlab.io/gotify/changelog/",
-	"documentation" : "https://mips2648.gitlab.io/gotify/#language#/",
+	"changelog" : "https://mips2648.github.io/gotify/changelog/",
+	"documentation" : "https://mips2648.github.io/gotify/#language#/",
 	"link" : {
 		"forum":"https://www.jeedom.com/forum/viewtopic.php?f=140&t=46488",
 		"video" : ""
