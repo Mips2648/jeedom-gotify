@@ -12,7 +12,7 @@
 	"changelog" : "https://mips2648.gitlab.io/gotify/changelog/",
 	"documentation" : "https://mips2648.gitlab.io/gotify/#language#/",
 	"link" : {
-		"forum":"",
+		"forum":"https://www.jeedom.com/forum/viewtopic.php?f=140&t=46488",
 		"video" : ""
 	},
 	"language" : ["fr_FR", "en_US"],

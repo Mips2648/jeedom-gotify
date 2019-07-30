@@ -9,4 +9,4 @@ permalink: /changelog/
 
 ## 2019-07-24
 
-First stable version
+First version
