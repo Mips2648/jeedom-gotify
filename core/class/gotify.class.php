@@ -22,28 +22,6 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 class gotify extends eqLogic {
     /*     * *************************Attributs****************************** */
 
-    // public static function health() {
-    //     $return = array();
-
-    //     $inMaintenance = true;
-    //     $return[] = array(
-    //         'test' => __('API gotify', __FILE__),
-    //         'result' => $inMaintenance ? 'NOK': 'OK',
-    //         'advice' =>  $inMaintenance ? __('Veuillez réessayer dans quelques minutes', __FILE__) : '',
-    //         'state' => !$inMaintenance,
-    //     );
-
-    //     $result = true;
-    //     $return[] = array(
-    //         'test' => __('Utilisateur et mot de passe', __FILE__),
-    //         'result' => $result==='' ? 'OK': 'NOK',
-    //         'advice' =>  $result,
-    //         'state' => $result==='',
-    //     );
-
-    //     return $return;
-    // }
-
     /*
      * Fonction exécutée automatiquement toutes les minutes par Jeedom
       public static function cron() {
