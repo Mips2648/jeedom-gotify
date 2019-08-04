@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Index
-lang: fr_FR
+lang: en_US
 ---
 
 # Description
@@ -25,7 +25,7 @@ Dans la configuration du plugin il faudra renseigner l'URL du server Gotify sous
 http://yourdomain.com:32768
 ```
 
-# Configuration de l'équipement
+# Device configuration
 
 Après avoir créé un nouvel équipement, les options habituelles sont disponnible.
 Il faudra également renseigner le token de l'application que vous aurez précédement créé dans Gotify.
