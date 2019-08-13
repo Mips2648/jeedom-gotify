@@ -6,20 +6,19 @@ lang: en_US
 
 # Description
 
-Plugin permettant à Jeedom d'agir comme une application Gotify qui peut envoyer des messages (notifications) à un serveur Gotify.
-Vous trouverez plus de détails dans <a href="https://gotify.net/docs/" target="_blank">la documentation de Gotify</a>.
+Plugin allowing Jeedom to act as a Gotify application that can send messages (notifications) to a Gotify server. You will find more details in <a href="https://gotify.net/docs/" target="_blank">Gotify's documentation</a> .
 
-L'avantage de ce système est de pouvoir être hébergé chez vous (un conteneur docker suffit), vos données reste ainsi en votre possession.
+The advantage of this system is that it can be self-hosted (a docker container is enough), your data remains in your possession.
 
 # Installation
 
-Afin d’utiliser le plugin, vous devez le télécharger, l’installer et l’activer comme tout plugin Jeedom.
+In order to use the plugin, you must download, install and activate it like any Jeedom plugin.
 
-Il est nécessaire de déjà avoir un serveur Gotify, l'installation ne sera pas détaillée ici car très clairement expliqué sur le site.
+It is needed to already have a Gotify server setup, the installation will not be detailed here because it is very clearly explained on the site.
 
-# Configuration du plugin
+# Plugin configuration
 
-Dans la configuration du plugin il faudra renseigner l'URL du server Gotify sous la forme:
+In the configuration of the plugin it will be necessary to setup the URL of the Gotify server in the format:
 
 ```HTTP
 http://yourdomain.com:32768
@@ -27,6 +26,4 @@ http://yourdomain.com:32768
 
 # Device configuration
 
-Après avoir créé un nouvel équipement, les options habituelles sont disponnible.
-Il faudra également renseigner le token de l'application que vous aurez précédement créé dans Gotify.
-Donc un équipement Jeedom correspond à une application Gotify.
+After creating new device, the usual options are available. It will also be neeed to setup the token of the application which you will have previously created in Gotify. So on Jeedom device matches one Gotify application.
