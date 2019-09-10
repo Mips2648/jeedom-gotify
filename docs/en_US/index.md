@@ -26,4 +26,6 @@ http://yourdomain.com:32768
 
 # Device configuration
 
-After creating new device, the usual options are available. It will also be neeed to setup the token of the application which you will have previously created in Gotify. So on Jeedom device matches one Gotify application.
+After creating new device, the usual options are available.
+It will also be needed to setup the token of the application which you will have previously created in Gotify.
+So one Jeedom device matches one Gotify application.
