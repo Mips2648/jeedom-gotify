@@ -20,35 +20,9 @@
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class gotify extends eqLogic {
-    /*     * *************************Attributs****************************** */
-
-    /*
-     * Fonction exécutée automatiquement toutes les minutes par Jeedom
-      public static function cron() {
-
-      }
-     */
-    /*
-    public static function cron5() {
-
-    }
-    */
-/*
-    public static function cronHourly() {
-
-    }
-*/
-     /*
-      public static function cronDaily() {
-
-      }
-    */
-
-
-    /*     * *********************Méthodes d'instance************************* */
 
     public function preInsert() {
-
+        $this->setConfiguration('verifyhost', '2');
     }
 
     public function postInsert() {
@@ -60,19 +34,19 @@ class gotify extends eqLogic {
     }
 
     public function postSave() {
-		$cmd = $this->getCmd(null, 'send');
-		if (!is_object($cmd)) {
-			$cmd = new gotifyCmd();
-			$cmd->setLogicalId('send');
-			$cmd->setIsVisible(1);
-			$cmd->setName(__('Envoi', __FILE__));
-			$cmd->setType('action');
-			$cmd->setSubType('message');
-			$cmd->setEqLogic_id($this->getId());
-			//$cmd->setDisplay('title_placeholder', __('Options', __FILE__));
-			//$cmd->setDisplay('message_placeholder', __('Message', __FILE__));
-			$cmd->save();
-		}
+        $cmd = $this->getCmd(null, 'send');
+        if (!is_object($cmd)) {
+            $cmd = new gotifyCmd();
+            $cmd->setLogicalId('send');
+            $cmd->setIsVisible(1);
+            $cmd->setName(__('Envoi', __FILE__));
+            $cmd->setType('action');
+            $cmd->setSubType('message');
+            $cmd->setEqLogic_id($this->getId());
+            //$cmd->setDisplay('title_placeholder', __('Options', __FILE__));
+            //$cmd->setDisplay('message_placeholder', __('Message', __FILE__));
+            $cmd->save();
+        }
     }
 
     public function preUpdate() {
@@ -124,6 +98,19 @@ class gotify extends eqLogic {
         $title = $_options['title'];
         $message = $_options['message'];
         log::add(__CLASS__, 'debug', "title:{$title} - message:{$message}");
+
+        if (isset($_options['files']) && is_array($_options['files'])) {
+            log::add(__CLASS__, 'debug', "Adding images to message");
+            foreach ($_options['files'] as $filepath) {
+                $ext = pathinfo($filepath, PATHINFO_EXTENSION);
+                if (in_array($ext, array('gif', 'jpeg', 'jpg', 'png'))) {
+                    $file = file_get_contents($filepath);
+                    $data = base64_encode($file);
+                    $message .= "  \n![](data:image/{$ext};base64,{$data})";
+                }
+            }
+        }
+
         $data = [
             "title"=> $title,
             "message"=> $message,
@@ -149,6 +136,7 @@ class gotify extends eqLogic {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->getConfiguration("verifyhost", '2'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 
@@ -161,54 +149,15 @@ class gotify extends eqLogic {
             log::add(__CLASS__, 'error', "httpCode:{$code} => {$result}");
         }
     }
-
-    /*
-     * Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
-      public function toHtml($_version = 'dashboard') {
-
-      }
-     */
-
-    /*
-     * Non obligatoire mais ca permet de déclencher une action après modification de variable de configuration
-    public static function postConfig_<Variable>() {
-    }
-     */
-
-    /*
-     * Non obligatoire mais ca permet de déclencher une action avant modification de variable de configuration
-    public static function preConfig_<Variable>() {
-    }
-     */
-
-
-    /*     * **********************Getteur Setteur*************************** */
-
 }
 
 class gotifyCmd extends cmd {
-    /*     * *************************Attributs****************************** */
-
-
-    /*     * ***********************Methode static*************************** */
-
-
-    /*     * *********************Methode d'instance************************* */
-
-    /*
-     * Non obligatoire permet de demander de ne pas supprimer les commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
-      public function dontRemoveCmd() {
-      return true;
-      }
-     */
-
     public function execute($_options = array()) {
-		$eqlogic = $this->getEqLogic();
-		switch ($this->getLogicalId()) {
+        $eqlogic = $this->getEqLogic();
+        switch ($this->getLogicalId()) {
             case 'send':
                 $eqlogic->sendMessage($_options);
-				break;
+                break;
         }
     }
-    /*     * **********************Getteur Setteur*************************** */
 }
