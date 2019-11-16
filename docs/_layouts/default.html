@@ -19,13 +19,13 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="https://www.jeedom.com/site">Site</a></li>
           <li><a href="https://www.jeedom.com/blog">Blog</a></li>
-          <li><a href="https://www.jeedom.com/forum">Forum</a></li>
+          <li><a href="{{site.forum}}">Community</a></li>
           <li><a href="https://www.jeedom.com/market">Market</a></li>
           <li class="active"><a href="https://www.jeedom.com/doc">Doc</a></li>
         </ul>
         <ul class="side-nav" id="nav-mobile">
           <li><a href="https://www.jeedom.com/blog">Blog</a></li>
-          <li><a href="https://www.jeedom.com/forum">Forum</a></li>
+          <li><a href="{{site.forum}}">Community</a></li>
           <li><a href="https://www.jeedom.com/market">Market</a></li>
           <li class="active"><a href="https://www.jeedom.com/doc">Doc</a></li>
         </ul>
@@ -40,7 +40,7 @@
         <div class="col s2">
           <i class="material-icons" style="position: relative;top:15px;">language</i>
         </div>
-        <div class="col s10"> 
+        <div class="col s10">
           <select class="sel_lang">
             {% for lang in site.langs %}
             <option data-href="index{% if lang != "fr_FR" %}-{{ lang }}{% endif %}.html" value="{{ lang }}">{% if lang == "fr_FR" %}Français{% endif %}{% if lang == "en_US" %}English{% endif %}{% if lang == "ru_RU" %}Russe{% endif %}{% if lang == "de_DE" %}Deutsch{% endif %}{% if lang == "es_ES" %}Spanish{% endif %}{% if lang == "it_IT" %}Italien{% endif %}{% if lang == "id_ID" %}Indien{% endif %}</option>
@@ -89,7 +89,7 @@
    document.title = 'Documentation Jeedom | '+ title[0].toUpperCase() + title.substring(1)
    $(".button-collapse").sideNav();
    $('meta[name=description]').remove();
-   $('head').append( '<meta name="description" content="Ceci est la documentation du plugin "'+ title[0].toUpperCase() + title.substring(1)+'", lier à la solution domotique Jeedom.">' ); 
+   $('head').append( '<meta name="description" content="Ceci est la documentation du plugin "'+ title[0].toUpperCase() + title.substring(1)+'", lier à la solution domotique Jeedom.">' );
    $('img').addClass('responsive-img');
    $('#div_content table').addClass('striped');
    init();
@@ -147,14 +147,14 @@
   if($(this)[0].tagName.toLowerCase() == 'h1'){
     $('#'+$(this).attr('id')).text(i + ') ' + $(this).text());
     i++;
-  } 
+  }
   if($(this)[0].tagName.toLowerCase() == 'h2'){
-    $('#'+$(this).attr('id')).text( (i-1) + '.' + j + ') ' + $(this).text()); 
+    $('#'+$(this).attr('id')).text( (i-1) + '.' + j + ') ' + $(this).text());
     j++;
   }else{
     j = 1;
   }
-});  
+});
 });
 
   var idChapitre = null, nbrChapitre = 0, idAncre = null;
