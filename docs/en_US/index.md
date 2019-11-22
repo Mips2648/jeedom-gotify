@@ -29,3 +29,11 @@ http://yourdomain.com:32768
 After creating new device, the usual options are available.
 It will also be needed to setup the token of the application which you will have previously created in Gotify.
 So one Jeedom device matches one Gotify application.
+
+# Changelog
+
+[See the changelog](./changelog)
+
+# Support
+
+If despite this documentation and after having read the topics related to the plugin on [community]({{site.forum}}) you do not find an answer to your question, do not hesitate to create a new topic with the tag of the plugin ({{site.tagPlugin}}).
