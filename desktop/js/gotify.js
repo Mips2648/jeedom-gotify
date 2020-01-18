@@ -31,6 +31,7 @@ function addCmdToTable(_cmd) {
     tr += '<span class="cmdAttr" data-l1key="id" style="display:none;"></span>';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="type" style="display : none;">';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="subType" style="display : none;">';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" style="display : none;">';
     tr += '<div class="col-sm-4">';
     tr += '<a class="cmdAction btn btn-default btn-sm" data-l1key="chooseIcon"><i class="fas fa-flag"></i> Icône</a>';
     tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left : 10px;"></span>';
@@ -41,13 +42,21 @@ function addCmdToTable(_cmd) {
     tr += '</div>';
     tr += '</td>';
     tr += '<td>';
-    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
-    tr += '<span><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" /> {{Afficher}}<br/></span>';
+    if (_cmd.logicalId=='send') {
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="priority" style="width : 50px;" placeholder="0">';
+    }
     tr += '</td>';
     tr += '<td>';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="unite" placeholder="Unité" title="{{Unité}}">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="minValue" placeholder="{{Min}}" title="{{Min}}" style="margin-top : 5px;"> ';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="maxValue" placeholder="{{Max}}" title="{{Max}}" style="margin-top : 5px;">';
+    if (_cmd.logicalId=='send') {
+        tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="contentType">';
+        tr += '<option value="markdown" selected>{{Format markdown: obligatoire pour les images}}</option>';
+        tr += '<option value="plain">{{Texte brut: images non-supportées}}</option>';
+        tr += '</select>';
+    }
+    tr += '</td>';
+    tr += '<td>';
+    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
+    tr += '<span><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" /> {{Afficher}}<br/></span>';
     tr += '</td>';
     tr += '<td>';
     if (is_numeric(_cmd.id)) {
@@ -69,4 +78,9 @@ $("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder:
 
 $('.pluginAction[data-action=openLocation]').on('click',function(){
     window.open($(this).attr("data-location"), "_blank", null);
+});
+
+$("#bt_addSendCmd").on('click', function (event) {
+    addCmdToTable({logicalId: 'send', type: 'action', subType: 'message'});
+    modifyWithoutSave = true;
 });
