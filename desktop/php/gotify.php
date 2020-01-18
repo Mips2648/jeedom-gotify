@@ -104,7 +104,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">{{Token}}</label>
+                                <label class="col-sm-3 control-label">{{Token d'application}}</label>
                                 <div class="col-sm-3">
                                     <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="token" placeholder="{{Saisir le token}}"/>
                                 </div>
@@ -125,11 +125,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="commandtab">
+            <a class="btn btn-default btn-sm pull-right" id="bt_addSendCmd" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
             <table id="table_cmd" class="table table-bordered table-condensed">
                 <thead>
                     <tr>
                         <th style="width: 400px;">{{Nom}}</th>
-                        <th>{{Paramètres}}</th>
+                        <th style="width: 150px;">{{Priorité}}</th>
+                        <th>{{Format}}</th>
                         <th style="width: 150px;">{{Options}}</th>
                         <th style="width: 150px;">{{Actions}}</th>
                     </tr>

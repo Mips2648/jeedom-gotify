@@ -39,12 +39,22 @@ class gotify extends eqLogic {
             $cmd = new gotifyCmd();
             $cmd->setLogicalId('send');
             $cmd->setIsVisible(1);
-            $cmd->setName(__('Envoi', __FILE__));
+            $cmd->setName(__('Envoyer', __FILE__));
             $cmd->setType('action');
             $cmd->setSubType('message');
             $cmd->setEqLogic_id($this->getId());
-            //$cmd->setDisplay('title_placeholder', __('Options', __FILE__));
-            //$cmd->setDisplay('message_placeholder', __('Message', __FILE__));
+            $cmd->save();
+        }
+
+        $cmd = $this->getCmd(null, 'delete');
+        if (!is_object($cmd)) {
+            $cmd = new gotifyCmd();
+            $cmd->setLogicalId('delete');
+            $cmd->setIsVisible(1);
+            $cmd->setName(__('Tout supprimer', __FILE__));
+            $cmd->setType('action');
+            $cmd->setSubType('other');
+            $cmd->setEqLogic_id($this->getId());
             $cmd->save();
         }
     }
@@ -65,39 +75,77 @@ class gotify extends eqLogic {
 
     }
 
-    // private function createApp() {
+    private function executeAction($resource, $method, $data = []) {
+        $ch = curl_init();
 
-    //     $url = "http://192.168.100.102:32768/application";
-    //     $headers = [
-    //         "Content-Type: application/json; charset=utf-8"
-    //     ];
-    //     $data = [
-    //         "name"=> "test2",
-    //         "description"=> "tutorial test"
-    //     ];
-    //     $data_string = json_encode($data);
+        $headers = [];
+        switch ($method) {
+            case 'POST':
+                $token = $this->getConfiguration('token');
+                if ($token==='') {
+                    throw new Exception(__('Vous devez configurer un token d\'application pour cette action.', __FILE__));
+                    return;
+                }
+                $headers[] = "Content-Type: application/json; charset=utf-8";
+                curl_setopt($ch, CURLOPT_POST, true);
+                $postfields = json_encode($data);
+                log::add(__CLASS__, 'debug', "data:{$postfields}");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
+                unset($postfields);
+                break;
+            case 'DELETE':
+                $token = config::byKey('clientToken', 'gotify');
+                if ($token==='') {
+                    throw new Exception(__('Vous devez configurer un token client pour cette action.', __FILE__));
+                    return;
+                }
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+                break;
+            default:
+                throw new Exception("Incorrect method: {$method}");
+        }
 
-    //     $ch = curl_init();
-    //     curl_setopt($ch, CURLOPT_URL, $url);
-    //     curl_setopt($ch, CURLOPT_POST, true);
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers );
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
-    //     curl_setopt($ch, CURLOPT_USERPWD, "admin:admin" );
-    //     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        $host = config::byKey('url', 'gotify');
+        curl_setopt($ch, CURLOPT_URL, "{$host}{$resource}");
 
-    //     $result = curl_exec($ch);
-    //     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        log::add(__CLASS__, 'debug', "{$method}:{$host}{$resource}");
 
-    //     curl_close ($ch);
+        $headers[] = 'Accept: application/json';
+        $headers[] = "X-Gotify-Key: {$token}";
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-    //     log::add(__CLASS__, 'debug', "{$code}:{$result}");
-    //     // curl -u admin:admin -X POST https://yourdomain.com/application -F "name=test" -F "description=tutorial"
-    // }
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->getConfiguration("verifyhost", '2'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    public function sendMessage($_options = array()) {
+        // curl_setopt($ch, CURLOPT_VERBOSE, true);
+        // curl_setopt($ch, CURLOPT_STDERR, fopen('php://stderr', 'w'));
+
+        $result = curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close ($ch);
+
+        if ($code!="200") {
+            log::add(__CLASS__, 'error', "httpCode:{$code} => {$result}");
+        }
+    }
+
+    public function deleteMessage() {
+        $this->executeAction('/message', 'DELETE');
+    }
+
+    public function postMessage($data) {
+        $this->executeAction('/message', 'POST', $data);
+    }
+}
+
+class gotifyCmd extends cmd {
+
+    private function sendMessage($_options = array()) {
         $title = $_options['title'];
         $message = $_options['message'];
-        log::add(__CLASS__, 'debug', "title:{$title} - message:{$message}");
+        $priority = (int)$this->getConfiguration('priority', 0);
+        $contentType = $this->getConfiguration('contentType', 'markdown');
+        log::add('gotify', 'debug', "title:{$title} - message:{$message} - priority:{$priority} - contentType:{$contentType}");
 
         if (isset($_options['files']) && is_array($_options['files'])) {
             log::add(__CLASS__, 'debug', "Adding images to message");
@@ -106,7 +154,9 @@ class gotify extends eqLogic {
                 if (in_array($ext, array('gif', 'jpeg', 'jpg', 'png'))) {
                     $file = file_get_contents($filepath);
                     $data = base64_encode($file);
-                    $message .= "  \n![](data:image/{$ext};base64,{$data})";
+                    if ($contentType=='markdown') {
+                        $message .= "  \n![](data:image/{$ext};base64,{$data})";
+                    }
                 }
             }
         }
@@ -114,49 +164,26 @@ class gotify extends eqLogic {
         $data = [
             "title"=> $title,
             "message"=> $message,
-            "priority"=> 5,
+            "priority"=> $priority,
               "extras" => [
                 "client::display" => [
-                    "contentType" => "text/markdown"
+                    "contentType" => "text/{$contentType}"
                 ]
             ]
         ];
-        $data_string = json_encode($data);
 
-        $token = $this->getConfiguration('token');
-        $domain = config::byKey('url', 'gotify');
-        $url = "{$domain}/message?token={$token}";
-        log::add(__CLASS__, 'debug', "url:{$url}");
-
-        $headers = [
-            "Content-Type: application/json; charset=utf-8"
-        ];
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->getConfiguration("verifyhost", '2'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-
-        $result = curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        curl_close ($ch);
-
-        if ($code!="200") {
-            log::add(__CLASS__, 'error', "httpCode:{$code} => {$result}");
-        }
-    }
-}
-
-class gotifyCmd extends cmd {
-    public function execute($_options = array()) {
         $eqlogic = $this->getEqLogic();
+        $eqlogic->postMessage($data);
+    }
+
+    public function execute($_options = array()) {
         switch ($this->getLogicalId()) {
             case 'send':
-                $eqlogic->sendMessage($_options);
+                $this->sendMessage($_options);
+                break;
+            case 'delete':
+                $eqlogic = $this->getEqLogic();
+                $eqlogic->deleteMessage();
                 break;
         }
     }
