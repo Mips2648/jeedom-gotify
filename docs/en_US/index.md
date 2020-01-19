@@ -24,16 +24,18 @@ In the configuration of the plugin it will be necessary to setup the URL of the 
 http://yourdomain.com:32768
 ```
 
-# Device configuration
+Vous pouvez éventuellement configurer un token client, ceci permettra à jeedom de consulter et supprimer les messages sur le serveur (sinon il ne pourra qu'en envoyer).
 
-After creating new device, the usual options are available.
-It will also be needed to setup the token of the application which you will have previously created in Gotify.
-So one Jeedom device matches one Gotify application.
+# Configuration de l'équipement
+
+Après avoir créé un nouvel équipement, les options habituelles sont disponibles.
+Il faudra également renseigner le token de l'application que vous aurez précédemment créé dans Gotify (à ne pas confondre avec le token client).
+Donc un équipement Jeedom correspond à une application Gotify.
 
 # Changelog
 
-[See the changelog](./changelog)
+[Voir le changelog](./changelog)
 
 # Support
 
-If despite this documentation and after having read the topics related to the plugin on [community]({{site.forum}}) you do not find an answer to your question, do not hesitate to create a new topic with the tag of the plugin ({{site.tagPlugin}}).
+Si malgré cette documentation et après voir lu les sujets en rapport avec le plugin sur [community]({{site.forum}}) vous ne trouvez pas de réponse à votre question, n'hésitez pas à créer un nouveau sujet en n'oubliant pas de mettre le tag du plugin ({{site.tagPlugin}}).
