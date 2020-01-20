@@ -8,16 +8,16 @@ lang: en_US
 
 ## 2019-08-02
 
-Première version
+First version
 
 ## 2019-09-28
 
-- Ajout d'une option pour la vérification du nom d'hôte du certificat de Gotify
-- Ajout du support des notifications avec images
+- Added an option for checking the host name of the Gotify certificate
+- Added support for notifications with images
 
 ## 2020-01-19
 
-- Ajout de la possibilité de créer plusieurs commandes d'envoi par équipement
-- Ajout d'une configuration sur chaque commande pour choisir la priorité de l'envoi
-- Ajout d'une configuration sur chaque commande pour choisir le format du message
-- Ajout d'une commande pour supprimer tous les messages sur le serveur (il faut avoir configurer un token client)
+- Added the possibility of creating several send commands by equipment
+- Added a configuration on each command to choose the priority
+- Added a configuration on each command to choose the format
+- Add a command to delete all messages on the server (you must have configured a client token)
