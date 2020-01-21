@@ -1,0 +1,44 @@
+{
+    "plugins\/gotify\/plugin_info\/configuration.php": {
+        "URL": "URL",
+        "Token client (optionnel)": "Client token (optional)",
+        "Saisir le token": "Enter the token"
+    },
+    "plugins\/gotify\/desktop\/php\/gotify.php": {
+        "Gestion": "Management",
+        "Ajouter": "Add",
+        "Configuration": "Setup",
+        "Documentation": "Documentation",
+        "Mes Gotify": "My Gotify",
+        "Rechercher": "Search",
+        "Configuration avancée": "Advanced configuration",
+        "Supprimer": "Delete",
+        "Sauvegarder": "Save",
+        "Equipement": "Device",
+        "Commandes": "Commands",
+        "Nom de l'équipement": "Device name",
+        "Objet parent": "Parent object",
+        "Aucun": "None",
+        "Catégorie": "Category",
+        "Activer": "Enable",
+        "Visible": "Visible",
+        "Token d'application": "Application token",
+        "Saisir le token": "Enter the token",
+        "Certificat de Gotify": "Gotify certificate",
+        "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Check for a common name and verify that it matches the host name provided (secure)",
+        "Vérifier l'existence d'un nom commun": "Check for a common name",
+        "Ne pas vérifier (pas sécurisé)": "Do not check (not secure)",
+        "Ajouter une commande": "Add a command",
+        "Nom": "Name",
+        "Priorité": "Priority",
+        "Format": "Format",
+        "Options": "Options",
+        "Actions": "Actions"
+    },
+    "plugins\/gotify\/core\/class\/gotify.class.php": {
+        "Envoyer": "Send",
+        "Tout supprimer": "Delete all",
+        "Vous devez configurer un token client pour cette action.": "You must configure a client token for this action.",
+        "Vous devez configurer un token d'application pour cette action.": "You must configure an application token for this action."
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "plugins\/gotify\/plugin_info\/configuration.php": {
+        "URL": "URL",
+        "Token client (optionnel)": "Token client (optionnel)",
+        "Saisir le token": "Saisir le token"
+    },
+    "plugins\/gotify\/desktop\/php\/gotify.php": {
+        "Gestion": "Gestion",
+        "Ajouter": "Ajouter",
+        "Configuration": "Configuration",
+        "Documentation": "Documentation",
+        "Mes Gotify": "Mes Gotify",
+        "Rechercher": "Rechercher",
+        "Configuration avancée": "Configuration avancée",
+        "Supprimer": "Supprimer",
+        "Sauvegarder": "Sauvegarder",
+        "Equipement": "Equipement",
+        "Commandes": "Commandes",
+        "Nom de l'équipement": "Nom de l'équipement",
+        "Objet parent": "Objet parent",
+        "Aucun": "Aucun",
+        "Catégorie": "Catégorie",
+        "Activer": "Activer",
+        "Visible": "Visible",
+        "Token d'application": "Token d'application",
+        "Saisir le token": "Saisir le token",
+        "Certificat de Gotify": "Certificat de Gotify",
+        "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)",
+        "Vérifier l'existence d'un nom commun": "Vérifier l'existence d'un nom commun",
+        "Ne pas vérifier (pas sécurisé)": "Ne pas vérifier (pas sécurisé)",
+        "Ajouter une commande": "Ajouter une commande",
+        "Nom": "Nom",
+        "Priorité": "Priorité",
+        "Format": "Format",
+        "Options": "Options",
+        "Actions": "Actions"
+    },
+    "plugins\/gotify\/core\/class\/gotify.class.php": {
+        "Envoyer": "Envoyer",
+        "Tout supprimer": "Tout supprimer",
+        "Vous devez configurer un token client pour cette action.": "Vous devez configurer un token client pour cette action.",
+        "Vous devez configurer un token d'application pour cette action.": "Vous devez configurer un token d'application pour cette action."
+    }
+}
