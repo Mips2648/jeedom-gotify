@@ -20,4 +20,4 @@ First version
 - Added the possibility of creating several send commands by equipment
 - Added a configuration on each command to choose the priority
 - Added a configuration on each command to choose the format
-- Add a command to delete all messages on the server (you must have configured a client token)
+- Ajout d'une commande pour supprimer tous les messages sur le serveur (il faut avoir configuré un token client)
