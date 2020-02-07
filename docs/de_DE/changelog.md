@@ -20,4 +20,4 @@ Première version
 - Ajout de la possibilité de créer plusieurs commandes d'envoi par équipement
 - Ajout d'une configuration sur chaque commande pour choisir la priorité de l'envoi
 - Ajout d'une configuration sur chaque commande pour choisir le format du message
-- Ajout d'une commande pour supprimer tous les messages sur le serveur (il faut avoir configurer un token client)
+- Ajout d'une commande pour supprimer tous les messages sur le serveur (il faut avoir configuré un token client)
