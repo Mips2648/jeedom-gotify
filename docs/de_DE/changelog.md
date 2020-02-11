@@ -6,6 +6,8 @@ lang: fr_FR
 
 # Changelog
 
+[Voir la dernière version](#tocAnchor-1-1-4)
+
 ## 2019-08-02
 
 Première version
@@ -21,3 +23,11 @@ Première version
 - Ajout d'une configuration sur chaque commande pour choisir la priorité de l'envoi
 - Ajout d'une configuration sur chaque commande pour choisir le format du message
 - Ajout d'une commande pour supprimer tous les messages sur le serveur (il faut avoir configuré un token client)
+
+## 2020-02-12
+
+- Vérification sur message vide avant l'envoi à Gotify
+
+# Documentation
+
+[Documentation]({{site.baseurl}}/)
