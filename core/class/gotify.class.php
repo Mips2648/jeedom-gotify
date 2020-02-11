@@ -141,8 +141,12 @@ class gotify extends eqLogic {
 class gotifyCmd extends cmd {
 
     private function sendMessage($_options = array()) {
-        $title = $_options['title'];
-        $message = $_options['message'];
+        if (!isset($_options['message']) || trim($_options['message'])=='') {
+            $error = __('Message ne peut pas être vide.', __FILE__);
+            throw new Exception($error);
+        }
+        $title = trim($_options['title']);
+        $message = trim($_options['message']);
         $priority = (int)$this->getConfiguration('priority', 0);
         $contentType = $this->getConfiguration('contentType', 'markdown');
         log::add('gotify', 'debug', "title:{$title} - message:{$message} - priority:{$priority} - contentType:{$contentType}");
