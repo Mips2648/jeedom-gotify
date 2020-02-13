@@ -39,6 +39,7 @@
         "Envoyer": "Envoyer",
         "Tout supprimer": "Tout supprimer",
         "Vous devez configurer un token client pour cette action.": "Vous devez configurer un token client pour cette action.",
-        "Vous devez configurer un token d'application pour cette action.": "Vous devez configurer un token d'application pour cette action."
+        "Vous devez configurer un token d'application pour cette action.": "Vous devez configurer un token d'application pour cette action.",
+        "Message ne peut pas être vide.": "Message ne peut pas être vide."
     }
 }
