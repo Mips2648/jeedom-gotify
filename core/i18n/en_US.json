@@ -39,6 +39,7 @@
         "Envoyer": "Send",
         "Tout supprimer": "Delete all",
         "Vous devez configurer un token client pour cette action.": "You must configure a client token for this action.",
-        "Vous devez configurer un token d'application pour cette action.": "You must configure an application token for this action."
+        "Vous devez configurer un token d'application pour cette action.": "You must configure an application token for this action.",
+        "Message ne peut pas être vide.": "Message cannot be empty."
     }
 }
