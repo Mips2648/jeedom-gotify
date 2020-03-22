@@ -18,7 +18,7 @@ plugins:
 - jekyll-seo-tag
 title: "Gotify"
 description: "Ceci est la documentation du plugin Gotify de la solution domotique Jeedom."
-author: "Mips2648"
+author: "Mips"
 image: https://www.jeedom.com/site/logo.png
 forum: https://community.jeedom.com/tags/plugin-gotify
 tagPlugin: plugin-gotify
