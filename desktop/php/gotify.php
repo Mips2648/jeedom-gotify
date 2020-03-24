@@ -26,6 +26,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <br>
             <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">{{Documentation}}</span>
         </div>
+        <div class="cursor pluginAction" data-action="openLocation" data-location="https://community.jeedom.com/tags/plugin-<?=$plugin->getId()?>" style="text-align: center; background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
+            <i class="fas fa-comments" style="font-size : 6em;color:#767676;"></i>
+            <br>
+            <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">Community</span>
+        </div>
     </div>
     <legend><i class="fas fa-table"></i> {{Mes Gotify}}</legend>
     <input class="form-control" placeholder="{{Rechercher}}" style="margin-bottom:4px;" id="in_searchEqlogic" />
