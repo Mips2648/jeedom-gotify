@@ -9,8 +9,8 @@
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://mips2648.github.io/jeedom-gotify/#language#/changelog",
-	"documentation" : "https://mips2648.github.io/jeedom-gotify/#language#/",
+	"changelog" : "https://mips2648.github.io/jeedom-plugins-docs/gotify/#language#/changelog",
+	"documentation" : "https://mips2648.github.io/jeedom-plugins-docs/gotify/#language#/",
 	"link" : {
 		"forum":"https://community.jeedom.com/tags/plugin-gotify",
 		"video" : ""
