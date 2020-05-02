@@ -1,24 +1,9 @@
 <?php
 
-/* This file is part of Jeedom.
- *
- * Jeedom is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Jeedom is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
- */
-
-/* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
+use Mips\Http\HttpClient;
 class gotify extends eqLogic {
 
     public function preInsert() {
@@ -75,66 +60,35 @@ class gotify extends eqLogic {
 
     }
 
-    private function executeAction($resource, $method, $data = []) {
-        $ch = curl_init();
-
-        $headers = [];
-        switch ($method) {
-            case 'POST':
-                $token = $this->getConfiguration('token');
-                if ($token==='') {
-                    throw new Exception(__('Vous devez configurer un token d\'application pour cette action.', __FILE__));
-                    return;
-                }
-                $headers[] = "Content-Type: application/json; charset=utf-8";
-                curl_setopt($ch, CURLOPT_POST, true);
-                $postfields = json_encode($data);
-                log::add(__CLASS__, 'debug', "data:{$postfields}");
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);
-                unset($postfields);
-                break;
-            case 'DELETE':
-                $token = config::byKey('clientToken', 'gotify');
-                if ($token==='') {
-                    throw new Exception(__('Vous devez configurer un token client pour cette action.', __FILE__));
-                    return;
-                }
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-                break;
-            default:
-                throw new Exception("Incorrect method: {$method}");
-        }
-
+    private function getClient($token) {
         $host = config::byKey('url', 'gotify');
-        curl_setopt($ch, CURLOPT_URL, "{$host}{$resource}");
-
-        log::add(__CLASS__, 'debug', "{$method}:{$host}{$resource}");
-
-        $headers[] = 'Accept: application/json';
-        $headers[] = "X-Gotify-Key: {$token}";
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->getConfiguration("verifyhost", '2'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // curl_setopt($ch, CURLOPT_VERBOSE, true);
-        // curl_setopt($ch, CURLOPT_STDERR, fopen('php://stderr', 'w'));
-
-        $result = curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close ($ch);
-
-        if ($code!="200") {
-            log::add(__CLASS__, 'error', "httpCode:{$code} => {$result}");
-        }
+        $client = new HttpClient($host, log::getLogger(__CLASS__));
+        $client->getHttpHeaders()->setHeader('X-Gotify-Key', $token);
+        return $client;
     }
 
     public function deleteMessage() {
-        $this->executeAction('/message', 'DELETE');
+        $token = config::byKey('clientToken', 'gotify');
+        if ($token==='') {
+            throw new RuntimeException(__('Vous devez configurer un token client pour cette action.', __FILE__));
+        }
+        $client = $this->getClient($token);
+        $response = $client->doDelete('message');
+        if (!$response->isSuccess()) {
+            log::add(__CLASS__, 'error', "httpCode:{$response->getHttpStatusCode()} => {$response->getBody()}");
+        }
     }
 
     public function postMessage($data) {
-        $this->executeAction('/message', 'POST', $data);
+        $token = $this->getConfiguration('token');
+        if ($token==='') {
+            throw new RuntimeException(__('Vous devez configurer un token d\'application pour cette action.', __FILE__));
+        }
+        $client = $this->getClient($token);
+        $response = $client->doPost('message', $data);
+        if (!$response->isSuccess()) {
+            log::add(__CLASS__, 'error', "httpCode:{$response->getHttpStatusCode()} => {$response->getBody()}");
+        }
     }
 }
 
