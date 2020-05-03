@@ -1,0 +1,13 @@
+{
+    "name": "mips/jeedom-gotify",
+    "description": "Plugin Gotify jeedom",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Mips"
+        }
+    ],
+    "require": {
+        "mips/httpclient": "~0.6"
+    }
+}
