@@ -26,7 +26,6 @@ function gotify_update() {
 
 }
 
-
 function gotify_remove() {
 
 }
