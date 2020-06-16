@@ -95,28 +95,27 @@ class gotify extends eqLogic {
 class gotifyCmd extends cmd {
 
     private function sendMessage($_options = array()) {
-        if (!isset($_options['message']) || trim($_options['message'])=='') {
-            $error = __('Message ne peut pas être vide.', __FILE__);
-            throw new Exception($error);
-        }
         $title = trim($_options['title']);
         $message = trim($_options['message']);
         $priority = (int)$this->getConfiguration('priority', 0);
         $contentType = $this->getConfiguration('contentType', 'markdown');
         log::add('gotify', 'debug', "title:{$title} - message:{$message} - priority:{$priority} - contentType:{$contentType}");
 
-        if (isset($_options['files']) && is_array($_options['files'])) {
+        if ($contentType=='markdown' && isset($_options['files']) && is_array($_options['files'])) {
             log::add(__CLASS__, 'debug', "Adding images to message");
             foreach ($_options['files'] as $filepath) {
                 $ext = pathinfo($filepath, PATHINFO_EXTENSION);
                 if (in_array($ext, array('gif', 'jpeg', 'jpg', 'png'))) {
                     $file = file_get_contents($filepath);
                     $data = base64_encode($file);
-                    if ($contentType=='markdown') {
-                        $message .= "  \n![](data:image/{$ext};base64,{$data})";
-                    }
+                    $message .= "  \n![](data:image/{$ext};base64,{$data})";
                 }
             }
+        }
+
+        if ($message=='') {
+            $error = __('Message ne peut pas être vide.', __FILE__);
+            throw new Exception($error);
         }
 
         $data = [
