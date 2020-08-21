@@ -37,13 +37,13 @@ function addCmdToTable(_cmd) {
     tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left : 10px;"></span>';
     tr += '</div>';
     tr += '<div class="col-sm-6">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" style="width : 200px;" placeholder="{{Nom}}">';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
     tr += '</div>';
     tr += '</div>';
     tr += '</td>';
     tr += '<td>';
     if (_cmd.logicalId=='send') {
-        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="priority" style="width : 50px;" placeholder="0">';
+        tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="priority" placeholder="0">';
     }
     tr += '</td>';
     tr += '<td>';
