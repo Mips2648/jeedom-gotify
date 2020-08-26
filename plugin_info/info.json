@@ -2,6 +2,7 @@
 	"id" : "gotify",
 	"name" : "Gotify",
 	"description" : "Plugin permettant la connection à un serveur Gotify. Gotify est une solution self-hosted, libre et open source permettant l'envoi et la réception de message. Plus d'info sur https://gotify.net/",
+	"utilization" : "Il est nécessaire d'avoir une instance du serveur disponible, celui-ci peut-être installé en docker ou vm... Plus d'info ici : https://gotify.net/docs/install",
 	"licence" : "AGPL",
 	"author" : "Mips",
 	"require" : "3.3.24",
