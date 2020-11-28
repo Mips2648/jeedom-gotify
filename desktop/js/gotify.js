@@ -26,18 +26,18 @@ function addCmdToTable(_cmd) {
         _cmd.configuration = {};
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
-    tr += '<td>';
+    tr += '<td style="min-width:300px;width:350px;">';
     tr += '<div class="row">';
     tr += '<span class="cmdAttr" data-l1key="id" style="display:none;"></span>';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="type" style="display : none;">';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="subType" style="display : none;">';
     tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" style="display : none;">';
-    tr += '<div class="col-sm-4">';
+    tr += '<div class="col-xs-7">';
+    tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
+    tr += '</div>';
+    tr += '<div class="col-xs-5">';
     tr += '<a class="cmdAction btn btn-default btn-sm" data-l1key="chooseIcon"><i class="fas fa-flag"></i> Icône</a>';
     tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left : 10px;"></span>';
-    tr += '</div>';
-    tr += '<div class="col-sm-6">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
     tr += '</div>';
     tr += '</div>';
     tr += '</td>';
@@ -55,8 +55,7 @@ function addCmdToTable(_cmd) {
     }
     tr += '</td>';
     tr += '<td>';
-    tr += '<span><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isHistorized" checked/>{{Historiser}}</label></span> ';
-    tr += '<span><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" /> {{Afficher}}<br/></span>';
+    tr += '<div><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></div> ';
     tr += '</td>';
     tr += '<td>';
     if (is_numeric(_cmd.id)) {

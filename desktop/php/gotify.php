@@ -50,9 +50,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
 <div class="col-xs-12 eqLogic" style="display: none;">
     <div class="input-group pull-right" style="display:inline-flex">
-        <span class="input-group-btn">
-            <a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fas fa-copy"></i> {{Dupliquer}}</a><a class="btn btn-success btn-sm eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
-        </span>
+    <span class="input-group-btn">
+			<a class="btn btn-sm btn-default eqLogicAction roundedLeft" data-action="configure"><i class="fa fa-cogs"></i><span class="hidden-xs"> {{Configuration avancée}}</span>
+			</a><a class="btn btn-sm btn-default eqLogicAction" data-action="copy"><i class="fas fa-copy"></i><span class="hidden-xs">  {{Dupliquer}}</span>
+			</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}
+			</a><a class="btn btn-sm btn-danger eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i><span class="hidden-xs"> {{Supprimer}}</span>
+			</a>
+		</span>
     </div>
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
@@ -79,9 +83,11 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                     <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
                                         <option value="">{{Aucun}}</option>
                                         <?php
-                                            foreach (jeeObject::all() as $object) {
-                                                echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
+                                            $options = '';
+                                            foreach ((jeeObject::buildTree(null, false)) as $object) {
+                                                $options .= '<option value="' . $object->getId() . '">' . str_repeat('&nbsp;&nbsp;', $object->getConfiguration('parentNumber')) . $object->getName() . '</option>';
                                             }
+                                            echo $options;
                                         ?>
                                     </select>
                                 </div>
@@ -127,20 +133,22 @@ $eqLogics = eqLogic::byType($plugin->getId());
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="commandtab">
-            <a class="btn btn-default btn-sm pull-right" id="bt_addSendCmd" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande}}</a><br/><br/>
-            <table id="table_cmd" class="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th style="width: 400px;">{{Nom}}</th>
-                        <th style="width: 100px;">{{Priorité}}</th>
-                        <th>{{Format}}</th>
-                        <th style="width: 150px;">{{Options}}</th>
-                        <th style="width: 150px;">{{Actions}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <a class="btn btn-default btn-sm pull-right" id="bt_addSendCmd" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande de notification}}</a><br/><br/>
+            <div class="table-responsive">
+                <table id="table_cmd" class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>{{Nom}}</th>
+                            <th>{{Priorité}}</th>
+                            <th>{{Format}}</th>
+                            <th>{{Options}}</th>
+                            <th>{{Actions}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
