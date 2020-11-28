@@ -11,7 +11,24 @@ class gotify extends eqLogic {
     }
 
     public function postInsert() {
+        $cmd = new gotifyCmd();
+        $cmd->setLogicalId('send');
+        $cmd->setIsVisible(1);
+        $cmd->setName(__('Envoyer', __FILE__));
+        $cmd->setType('action');
+        $cmd->setSubType('message');
+        $cmd->setEqLogic_id($this->getId());
+        $cmd->save();
+        $cmd = $this->getCmd(null, 'send');
 
+        $cmd = new gotifyCmd();
+        $cmd->setLogicalId('delete');
+        $cmd->setIsVisible(1);
+        $cmd->setName(__('Tout supprimer', __FILE__));
+        $cmd->setType('action');
+        $cmd->setSubType('other');
+        $cmd->setEqLogic_id($this->getId());
+        $cmd->save();
     }
 
     public function preSave() {
@@ -19,29 +36,7 @@ class gotify extends eqLogic {
     }
 
     public function postSave() {
-        $cmd = $this->getCmd(null, 'send');
-        if (!is_object($cmd)) {
-            $cmd = new gotifyCmd();
-            $cmd->setLogicalId('send');
-            $cmd->setIsVisible(1);
-            $cmd->setName(__('Envoyer', __FILE__));
-            $cmd->setType('action');
-            $cmd->setSubType('message');
-            $cmd->setEqLogic_id($this->getId());
-            $cmd->save();
-        }
 
-        $cmd = $this->getCmd(null, 'delete');
-        if (!is_object($cmd)) {
-            $cmd = new gotifyCmd();
-            $cmd->setLogicalId('delete');
-            $cmd->setIsVisible(1);
-            $cmd->setName(__('Tout supprimer', __FILE__));
-            $cmd->setType('action');
-            $cmd->setSubType('other');
-            $cmd->setEqLogic_id($this->getId());
-            $cmd->save();
-        }
     }
 
     public function preUpdate() {
@@ -93,6 +88,10 @@ class gotify extends eqLogic {
 }
 
 class gotifyCmd extends cmd {
+
+    public function dontRemoveCmd() {
+        return $this->getLogicalId() == 'delete';
+    }
 
     private function sendMessage($_options = array()) {
         $title = trim($_options['title']);
