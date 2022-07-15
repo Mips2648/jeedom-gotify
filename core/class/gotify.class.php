@@ -4,6 +4,7 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Mips\Http\HttpClient;
+
 class gotify extends eqLogic {
 
     public function preInsert() {
@@ -31,29 +32,6 @@ class gotify extends eqLogic {
         $cmd->save();
     }
 
-    public function preSave() {
-
-    }
-
-    public function postSave() {
-
-    }
-
-    public function preUpdate() {
-
-    }
-
-    public function postUpdate() {
-
-    }
-
-    public function preRemove() {
-
-    }
-
-    public function postRemove() {
-
-    }
 
     private function getClient($token) {
         $host = config::byKey('url', 'gotify');
@@ -64,7 +42,7 @@ class gotify extends eqLogic {
 
     public function deleteMessage() {
         $token = config::byKey('clientToken', 'gotify');
-        if ($token==='') {
+        if ($token === '') {
             throw new RuntimeException(__('Vous devez configurer un token client pour cette action.', __FILE__));
         }
         $client = $this->getClient($token);
@@ -76,7 +54,7 @@ class gotify extends eqLogic {
 
     public function postMessage($data) {
         $token = $this->getConfiguration('token');
-        if ($token==='') {
+        if ($token === '') {
             throw new RuntimeException(__('Vous devez configurer un token d\'application pour cette action.', __FILE__));
         }
         $client = $this->getClient($token);
@@ -100,7 +78,7 @@ class gotifyCmd extends cmd {
         $contentType = $this->getConfiguration('contentType', 'markdown');
         log::add('gotify', 'debug', "title:{$title} - message:{$message} - priority:{$priority} - contentType:{$contentType}");
 
-        if ($contentType=='markdown' && isset($_options['files']) && is_array($_options['files'])) {
+        if ($contentType == 'markdown' && isset($_options['files']) && is_array($_options['files'])) {
             log::add(__CLASS__, 'debug', "Adding images to message");
             foreach ($_options['files'] as $filepath) {
                 $ext = pathinfo($filepath, PATHINFO_EXTENSION);
@@ -112,16 +90,16 @@ class gotifyCmd extends cmd {
             }
         }
 
-        if ($message=='') {
+        if ($message == '') {
             $error = __('Message ne peut pas être vide.', __FILE__);
             throw new Exception($error);
         }
 
         $data = [
-            "title"=> $title,
-            "message"=> $message,
-            "priority"=> $priority,
-              "extras" => [
+            "title" => $title,
+            "message" => $message,
+            "priority" => $priority,
+            "extras" => [
                 "client::display" => [
                     "contentType" => "text/{$contentType}"
                 ]
