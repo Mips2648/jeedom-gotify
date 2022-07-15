@@ -48,6 +48,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
                 echo '<img src="' . $eqLogic->getImage() . '"/>';
                 echo "<br>";
                 echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
+                echo '<span class="hidden hiddenAsCard displayTableRight">';
+                echo ($eqLogic->getIsVisible() == 1) ? '<i class="fas fa-eye" title="{{Equipement visible}}"></i>' : '<i class="fas fa-eye-slash" title="{{Equipement non visible}}"></i>';
+                echo '</span>';
                 echo '</div>';
             }
             ?>
