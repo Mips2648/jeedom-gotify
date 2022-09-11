@@ -123,7 +123,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">{{Token d'application}}</label>
                                     <div class="col-sm-3">
-                                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="token" placeholder="{{Saisir le token}}" />
+                                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="appToken" placeholder="{{Saisir le token}}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">{{Token client (optionnel)}}</label>
+                                    <div class="col-sm-3">
+                                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="clientToken" placeholder="{{Saisir le token}}" />
                                     </div>
                                 </div>
                                 <div class="form-group">
