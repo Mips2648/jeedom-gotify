@@ -27,14 +27,8 @@ if (!isConnect()) {
         <div class="form-group">
             <label class="col-sm-4 control-label">{{URL}}</label>
             <div class="col-sm-3">
-                <input type="text" class="configKey form-control" data-l1key="url" placeholder="http://yourdomain.com:32768"/>
+                <input type="text" class="configKey form-control" data-l1key="url" placeholder="http://yourdomain.com:32768" />
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-4 control-label">{{Token client (optionnel)}}</label>
-            <div class="col-sm-3">
-                <input type="text" class="configKey form-control" data-l1key="clientToken" placeholder="{{Saisir le token}}"/>
-            </div>
-        </div>
-  </fieldset>
+    </fieldset>
 </form>

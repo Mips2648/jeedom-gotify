@@ -41,8 +41,8 @@ class gotify extends eqLogic {
     }
 
     public function deleteMessage() {
-        $token = config::byKey('clientToken', 'gotify');
-        if ($token === '') {
+        $token = $this->getConfiguration('clientToken');
+        if ($token == '') {
             throw new RuntimeException(__('Vous devez configurer un token client pour cette action.', __FILE__));
         }
         $client = $this->getClient($token);
@@ -53,8 +53,8 @@ class gotify extends eqLogic {
     }
 
     public function postMessage($data) {
-        $token = $this->getConfiguration('token');
-        if ($token === '') {
+        $token = $this->getConfiguration('appToken');
+        if ($token == '') {
             throw new RuntimeException(__('Vous devez configurer un token d\'application pour cette action.', __FILE__));
         }
         $client = $this->getClient($token);
