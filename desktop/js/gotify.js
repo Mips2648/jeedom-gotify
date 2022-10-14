@@ -20,49 +20,58 @@
  */
 function addCmdToTable(_cmd) {
     if (!isset(_cmd)) {
-        var _cmd = {configuration: {}};
+        var _cmd = { configuration: {} };
     }
     if (!isset(_cmd.configuration)) {
         _cmd.configuration = {};
     }
     var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">';
-    tr += '<td style="min-width:300px;width:350px;">';
-    tr += '<div class="row">';
+    tr += '<td>';
     tr += '<span class="cmdAttr" data-l1key="id" style="display:none;"></span>';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="type" style="display : none;">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="subType" style="display : none;">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="logicalId" style="display : none;">';
-    tr += '<div class="col-xs-7">';
-    tr += '<input class="cmdAttr form-control input-sm" data-l1key="name" placeholder="{{Nom}}">';
-    tr += '</div>';
-    tr += '<div class="col-xs-5">';
-    tr += '<a class="cmdAction btn btn-default btn-sm" data-l1key="chooseIcon"><i class="fas fa-flag"></i> Icône</a>';
-    tr += '<span class="cmdAttr" data-l1key="display" data-l2key="icon" style="margin-left : 10px;"></span>';
-    tr += '</div>';
+
+    tr += '<div class="input-group">';
+    tr += '<input class="cmdAttr form-control input-sm roundedLeft" data-l1key="name" placeholder="{{Nom de la commande}}">';
+    tr += '<span class="input-group-btn"><a class="cmdAction btn btn-sm btn-default" data-l1key="chooseIcon" title="{{Choisir une icône}}"><i class="fas fa-icons"></i></a></span>';
+    tr += '<span class="cmdAttr input-group-addon roundedRight" data-l1key="display" data-l2key="icon" style="font-size:19px;padding:0 5px 0 0!important;"></span>';
     tr += '</div>';
     tr += '</td>';
+
     tr += '<td>';
-    if (_cmd.logicalId=='send') {
+    tr += '<input class="cmdAttr form-control type input-sm" data-l1key="type" value="' + init(_cmd.type) + '" disabled style="width : 120px;margin-top : 5px;" />';
+    tr += '<input class="cmdAttr form-control type input-sm" data-l1key="subType" value="' + init(_cmd.subType) + '" disabled style="width : 120px;margin-top : 5px;" />';
+    tr += '</td>';
+
+    tr += '<td>';
+    if (_cmd.logicalId == 'send') {
         tr += '<input class="cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="priority" placeholder="0">';
     }
     tr += '</td>';
     tr += '<td>';
-    if (_cmd.logicalId=='send') {
+    if (_cmd.logicalId == 'send') {
         tr += '<select class="cmdAttr form-control" data-l1key="configuration" data-l2key="contentType">';
         tr += '<option value="markdown" selected>{{Format markdown: obligatoire pour les images}}</option>';
         tr += '<option value="plain">{{Texte brut: images non-supportées}}</option>';
         tr += '</select>';
     }
     tr += '</td>';
+
     tr += '<td>';
-    tr += '<div><label class="checkbox-inline"><input type="checkbox" class="cmdAttr checkbox-inline" data-l1key="isVisible" checked/>{{Afficher}}</label></div> ';
+    tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label> ';
+    tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked/>{{Historiser}}</label> ';
+    tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label> ';
+    tr += '<div style="margin-top:7px;">';
+    tr += '<input class="tooltips cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="minValue" placeholder="{{Min}}" title="{{Min}}" style="width:30%;max-width:80px;display:inline-block;margin-right:2px;">';
+    tr += '<input class="tooltips cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="maxValue" placeholder="{{Max}}" title="{{Max}}" style="width:30%;max-width:80px;display:inline-block;margin-right:2px;">';
+    tr += '<input class="tooltips cmdAttr form-control input-sm" data-l1key="unite" placeholder="Unité" title="{{Unité}}" style="width:30%;max-width:80px;display:inline-block;margin-right:2px;">';
+    tr += '</div>';
     tr += '</td>';
+
     tr += '<td>';
     if (is_numeric(_cmd.id)) {
         tr += '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fas fa-cogs"></i></a> ';
         tr += '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fas fa-rss"></i> {{Tester}}</a>';
     }
-    tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>';
+    tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove" title="{{Supprimer la commande}}"></i>';
     tr += '</td>';
     tr += '</tr>';
     $('#table_cmd tbody').append(tr);
@@ -73,13 +82,13 @@ function addCmdToTable(_cmd) {
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
 }
 
-$("#table_cmd").sortable({axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+$("#table_cmd").sortable({ axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true });
 
-$('.pluginAction[data-action=openLocation]').on('click',function(){
+$('.pluginAction[data-action=openLocation]').on('click', function () {
     window.open($(this).attr("data-location"), "_blank", null);
 });
 
 $("#bt_addSendCmd").on('click', function (event) {
-    addCmdToTable({logicalId: 'send', type: 'action', subType: 'message'});
+    addCmdToTable({ logicalId: 'send', type: 'action', subType: 'message' });
     modifyWithoutSave = true;
 });
