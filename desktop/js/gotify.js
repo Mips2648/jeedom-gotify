@@ -37,8 +37,8 @@ function addCmdToTable(_cmd) {
     tr += '</td>';
 
     tr += '<td>';
-    tr += '<input class="cmdAttr form-control type input-sm" data-l1key="type" value="' + init(_cmd.type) + '" disabled style="width : 120px;margin-top : 5px;" />';
-    tr += '<input class="cmdAttr form-control type input-sm" data-l1key="subType" value="' + init(_cmd.subType) + '" disabled style="width : 120px;margin-top : 5px;" />';
+    tr += '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>'
+    tr += '<span class="subType" subType="' + init(_cmd.subType) + '"></span>'
     tr += '</td>';
 
     tr += '<td>';
@@ -74,12 +74,23 @@ function addCmdToTable(_cmd) {
     tr += '<i class="fas fa-minus-circle pull-right cmdAction cursor" data-action="remove" title="{{Supprimer la commande}}"></i>';
     tr += '</td>';
     tr += '</tr>';
+
     $('#table_cmd tbody').append(tr);
-    $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
-    if (isset(_cmd.type)) {
-        $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
-    }
-    jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+    var tr = $('#table_cmd tbody tr:last');
+    jeedom.eqLogic.builSelectCmd({
+        id: $('.eqLogicAttr[data-l1key=id]').value(),
+        filter: { type: 'info' },
+        error: function (error) {
+            $('#div_alert').showAlert({ message: error.message, level: 'danger' });
+        },
+        success: function (result) {
+            tr.find('.cmdAttr[data-l1key=value]').append(result);
+        }
+    });
+    tr.setValues(_cmd, '.cmdAttr');
+    jeedom.cmd.changeType(tr, init(_cmd.subType));
+
+    tr.find('.cmdAttr[data-l1key=type],.cmdAttr[data-l1key=subType]').prop("disabled", true);
 }
 
 $("#table_cmd").sortable({ axis: "y", cursor: "move", items: ".cmd", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true });
