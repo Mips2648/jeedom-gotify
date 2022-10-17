@@ -70,7 +70,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
             <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
-            <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
+            <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list"></i> {{Commandes}}</a></li>
         </ul>
         <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
             <div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -153,11 +153,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
                     <table id="table_cmd" class="table table-bordered table-condensed">
                         <thead>
                             <tr>
-                                <th>{{Nom}}</th>
+                                <th style="min-width:220px;width:350px;">{{Nom}}</th>
+                                <th style="min-width:140px;width:200px;">{{Type}}</th>
                                 <th>{{Priorité}}</th>
                                 <th>{{Format}}</th>
-                                <th>{{Options}}</th>
-                                <th>{{Actions}}</th>
+                                <th style="min-width:260px;">{{Options}}</th>
+                                <th style="min-width:80px;width:140px;">{{Actions}}</th>
                             </tr>
                         </thead>
                         <tbody>
