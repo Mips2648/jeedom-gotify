@@ -74,78 +74,88 @@ $eqLogics = eqLogic::byType($plugin->getId());
         </ul>
         <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
             <div role="tabpanel" class="tab-pane active" id="eqlogictab">
-                <br />
-                <div class="row">
-                    <div class="col-sm-7">
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Nom de l'équipement}}</label>
-                                    <div class="col-sm-3">
-                                        <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-                                        <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}" />
-                                    </div>
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="col-sm-7">
+                            <legend><i class="fas fa-wrench"></i> {{Paramètres généraux}}</legend>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Nom de l'équipement}}</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
+                                    <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}" />
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Objet parent}}</label>
-                                    <div class="col-sm-3">
-                                        <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
-                                            <option value="">{{Aucun}}</option>
-                                            <?php
-                                            $options = '';
-                                            foreach ((jeeObject::buildTree(null, false)) as $object) {
-                                                $options .= '<option value="' . $object->getId() . '">' . str_repeat('&nbsp;&nbsp;', $object->getConfiguration('parentNumber')) . $object->getName() . '</option>';
-                                            }
-                                            echo $options;
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Catégorie}}</label>
-                                    <div class="col-sm-9">
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Objet parent}}</label>
+                                <div class="col-sm-3">
+                                    <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+                                        <option value="">{{Aucun}}</option>
                                         <?php
-                                        foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
-                                            echo '<label class="checkbox-inline">';
-                                            echo '<input type="checkbox" class="eqLogicAttr" data-l1key="category" data-l2key="' . $key . '" />' . $value['name'];
-                                            echo '</label>';
+                                        $options = '';
+                                        foreach ((jeeObject::buildTree(null, false)) as $object) {
+                                            $options .= '<option value="' . $object->getId() . '">' . str_repeat('&nbsp;&nbsp;', $object->getConfiguration('parentNumber')) . $object->getName() . '</option>';
                                         }
+                                        echo $options;
                                         ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Catégorie}}</label>
+                                <div class="col-sm-9">
+                                    <?php
+                                    foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
+                                        echo '<label class="checkbox-inline">';
+                                        echo '<input type="checkbox" class="eqLogicAttr" data-l1key="category" data-l2key="' . $key . '" />' . $value['name'];
+                                        echo '</label>';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"></label>
+                                <div class="col-sm-9">
+                                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked />{{Activer}}</label>
+                                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked />{{Visible}}</label>
+                                </div>
+                            </div>
+
+                            <legend><i class="fas fa-cogs"></i> {{Paramètres spécifiques}}</legend>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Token d'application}}</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <input class="eqLogicAttr form-control roundedLeft inputPassword" type="text" data-l1key="configuration" data-l2key="appToken" placeholder="{{Saisir le token}}" />
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-default form-control bt_showPass roundedRight"><i class="fas fa-eye"></i></a>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label"></label>
-                                    <div class="col-sm-9">
-                                        <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked />{{Activer}}</label>
-                                        <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked />{{Visible}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Token client (optionnel)}}</label>
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <input class="eqLogicAttr form-control inputPassword roundedLeft" data-l1key="configuration" data-l2key="clientToken" placeholder="{{Saisir le token}}" />
+                                        <span class="input-group-btn">
+                                            <a class="btn btn-default form-control bt_showPass roundedRight"><i class="fas fa-eye"></i></a>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Token d'application}}</label>
-                                    <div class="col-sm-3">
-                                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="appToken" placeholder="{{Saisir le token}}" />
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">{{Certificat de Gotify}}</label>
+                                <div class="col-sm-9">
+                                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="verifyhost">
+                                        <option value="2" selected>{{Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)}}</option>
+                                        <option value="1">{{Vérifier l'existence d'un nom commun}}</option>
+                                        <option value="0">{{Ne pas vérifier (pas sécurisé)}}</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Token client (optionnel)}}</label>
-                                    <div class="col-sm-3">
-                                        <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="clientToken" placeholder="{{Saisir le token}}" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">{{Certificat de Gotify}}</label>
-                                    <div class="col-sm-9">
-                                        <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="verifyhost">
-                                            <option value="2" selected>{{Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)}}</option>
-                                            <option value="1">{{Vérifier l'existence d'un nom commun}}</option>
-                                            <option value="0">{{Ne pas vérifier (pas sécurisé)}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
             <div role="tabpanel" class="tab-pane" id="commandtab">
                 <a class="btn btn-default btn-sm pull-right" id="bt_addSendCmd" style="margin-top:5px;"><i class="fas fa-plus-circle"></i> {{Ajouter une commande de notification}}</a><br /><br />
