@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "mips/httpclient": "~0.6"
+        "mips/httpclient": "^1.0"
     }
 }

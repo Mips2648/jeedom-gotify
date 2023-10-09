@@ -22,7 +22,7 @@ class HttpHeader {
         $this->headers->offsetSet($header, $value);
     }
 
-    public function getHeader($header, $value) {
+    public function getHeader($header) {
         $this->headers->offsetGet($header);
     }
 
