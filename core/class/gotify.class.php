@@ -7,6 +7,15 @@ use Mips\Http\HttpClient;
 
 class gotify extends eqLogic {
 
+    public function decrypt() {
+        $this->setConfiguration('appToken', utils::decrypt($this->getConfiguration('appToken')));
+        $this->setConfiguration('clientToken', utils::decrypt($this->getConfiguration('clientToken')));
+    }
+    public function encrypt() {
+        $this->setConfiguration('appToken', utils::encrypt($this->getConfiguration('appToken')));
+        $this->setConfiguration('clientToken', utils::encrypt($this->getConfiguration('clientToken')));
+    }
+
     public function preInsert() {
         $this->setConfiguration('verifyhost', '2');
     }
@@ -31,7 +40,6 @@ class gotify extends eqLogic {
         $cmd->setEqLogic_id($this->getId());
         $cmd->save();
     }
-
 
     private function getClient($token) {
         $host = config::byKey('url', 'gotify');
@@ -106,6 +114,7 @@ class gotifyCmd extends cmd {
             ]
         ];
 
+        /** @var gotify */
         $eqlogic = $this->getEqLogic();
         $eqlogic->postMessage($data);
     }
@@ -116,6 +125,7 @@ class gotifyCmd extends cmd {
                 $this->sendMessage($_options);
                 break;
             case 'delete':
+                /** @var gotify */
                 $eqlogic = $this->getEqLogic();
                 $eqlogic->deleteMessage();
                 break;
