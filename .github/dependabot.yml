@@ -10,6 +10,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    target-branch: "beta"
 
   # Maintain any github-actions workflow
   # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
