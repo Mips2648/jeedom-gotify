@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '869f46ef9955033ef8eb33ca15d8b99d4f1e6d34',
+    'reference' => '9dcb4672a2bb9946b33724c5e7f042cd2fb21400',
     'name' => 'mips/jeedom-gotify',
   ),
   'versions' => 
@@ -50,7 +50,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '869f46ef9955033ef8eb33ca15d8b99d4f1e6d34',
+      'reference' => '9dcb4672a2bb9946b33724c5e7f042cd2fb21400',
     ),
     'psr/log' => 
     array (
