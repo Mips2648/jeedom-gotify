@@ -11,6 +11,6 @@ jobs:
   auto-translate:
     runs-on: ubuntu-latest
     steps:
-      - uses: jeedomThirdPartyDevs/plugins-translations@v0.12
+      - uses: jeedomThirdPartyDevs/plugins-translations@v0.13
         with:
           deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
