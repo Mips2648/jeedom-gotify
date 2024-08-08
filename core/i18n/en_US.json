@@ -1,28 +1,28 @@
 {
     "plugins\/gotify\/core\/ajax\/gotify.ajax.php": {
         "401 - Accès non autorisé": "401 - Unauthorized access",
-        "Aucune méthode correspondante à : ": "Aucune méthode correspondante à : "
+        "Aucune méthode correspondante à : ": "No method corresponding to :"
     },
     "plugins\/gotify\/core\/class\/gotify.class.php": {
         "Envoyer": "Send",
         "Message ne peut pas être vide.": "Message cannot be empty.",
         "Tout supprimer": "Delete all",
         "Vous devez configurer un token client pour cette action.": "You must configure a client token for this action.",
-        "Vous devez configurer un token d\\'application pour cette action.": "Vous devez configurer un token d\\'application pour cette action."
+        "Vous devez configurer un token d\\'application pour cette action.": "You must configure an application token for this action."
     },
     "plugins\/gotify\/core\/php\/gotify.inc.php": {},
     "plugins\/gotify\/desktop\/js\/gotify.js": {
         "Afficher": "Show",
         "Choisir une icône": "Choose an icon",
-        "Format markdown: obligatoire pour les images": "Format markdown: obligatoire pour les images",
+        "Format markdown: obligatoire pour les images": "Markdown format: mandatory for images",
         "Historiser": "Historize",
         "Inverser": "Invert",
         "Max": "Maximum",
         "Min": "Minimum",
-        "Nom de la commande": "Nom de la commande",
-        "Supprimer la commande": "Supprimer la commande",
+        "Nom de la commande": "Order name",
+        "Supprimer la commande": "Delete command",
         "Tester": "Test",
-        "Texte brut: images non-supportées": "Texte brut: images non-supportées",
+        "Texte brut: images non-supportées": "Plain text: unsupported images",
         "Unité": "Unit"
     },
     "plugins\/gotify\/desktop\/php\/gotify.php": {
@@ -30,7 +30,7 @@
         "Actions": "Actions",
         "Activer": "Enable",
         "Ajouter": "Add",
-        "Ajouter une commande de notification": "Ajouter une commande de notification",
+        "Ajouter une commande de notification": "Add a notification command",
         "Aucun": "None",
         "Catégorie": "Category",
         "Certificat de Gotify": "Gotify certificate",
@@ -40,8 +40,8 @@
         "Documentation": "Documentation",
         "Dupliquer": "Duplicate",
         "Equipement": "Device",
-        "Equipement non visible": "Equipement non visible",
-        "Equipement visible": "Equipement visible",
+        "Equipement non visible": "Equipment not visible",
+        "Equipement visible": "Visible equipment",
         "Format": "Format",
         "Gestion": "Management",
         "Mes Gotify": "My Gotify",
@@ -50,8 +50,8 @@
         "Nom de l'équipement": "Device name",
         "Objet parent": "Parent object",
         "Options": "Options",
-        "Paramètres généraux": "Paramètres généraux",
-        "Paramètres spécifiques": "Paramètres spécifiques",
+        "Paramètres généraux": "General parameters",
+        "Paramètres spécifiques": "Specific parameters",
         "Priorité": "Priority",
         "Rechercher": "Search",
         "Saisir le token": "Enter the token",
