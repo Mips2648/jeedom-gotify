@@ -1,9 +1,0 @@
-{
-    "plugins\/gotify\/core\/ajax\/gotify.ajax.php": {},
-    "plugins\/gotify\/core\/class\/gotify.class.php": {},
-    "plugins\/gotify\/core\/php\/gotify.inc.php": {},
-    "plugins\/gotify\/desktop\/js\/gotify.js": {},
-    "plugins\/gotify\/desktop\/php\/gotify.php": {},
-    "plugins\/gotify\/plugin_info\/configuration.php": {},
-    "plugins\/gotify\/plugin_info\/install.php": {}
-}
