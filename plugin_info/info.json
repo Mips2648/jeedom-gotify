@@ -18,7 +18,7 @@
 		"forum": "https://community.jeedom.com/tag/plugin-gotify",
 		"video": ""
 	},
-	"languages": [
+	"language": [
 		"fr_FR",
 		"en_US",
 		"es_ES",
