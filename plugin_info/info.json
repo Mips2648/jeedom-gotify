@@ -5,7 +5,9 @@
 		"fr_FR": "Plugin permettant la connection à un serveur Gotify. Gotify est une solution self-hosted, libre et open source permettant l'envoi et la réception de message. Plus d'info sur https://gotify.net/",
 		"en_US": "Plugin to connect to a Gotify server. Gotify is a self-hosted, free and open source solution for sending and receiving messages. More info at https://gotify.net/",
 		"es_ES": "Plugin para conectarse a un servidor Gotify. Gotify es una solución autoalojada, gratuita y de código abierto para enviar y recibir mensajes. Más información en https://gotify.net/",
-		"de_DE": "Plugin, das die Verbindung zu einem Gotify-Server ermöglicht. Gotify ist eine freie Open-Source-Lösung, die das Senden und Empfangen von Nachrichten ermöglicht. Weitere Informationen unter https://gotify.net/"
+		"de_DE": "Plugin, das die Verbindung zu einem Gotify-Server ermöglicht. Gotify ist eine freie Open-Source-Lösung, die das Senden und Empfangen von Nachrichten ermöglicht. Weitere Informationen unter https://gotify.net/",
+		"it_IT": "Plugin per la connessione a un server Gotify. Gotify è una soluzione self-hosted, gratuita e open source per l'invio e la ricezione di messaggi. Maggiori informazioni su https://gotify.net/",
+		"pt_PT": "Plugin para ligação a um servidor Gotify. O Gotify é uma solução auto-hospedada, gratuita e de código aberto para enviar e receber mensagens. Mais informações em https://gotify.net/"
 	},
 	"utilization": "Il est nécessaire d'avoir une instance du serveur disponible, celui-ci peut-être installé en docker ou vm... Plus d'info ici : https://gotify.net/docs/install",
 	"licence": "AGPL",
@@ -27,7 +29,9 @@
 		"de_DE",
 		"en_US",
 		"es_ES",
-		"fr_FR"
+		"fr_FR",
+		"it_IT",
+		"pt_PT"
 	],
 	"compatibility": [
 		"smart",

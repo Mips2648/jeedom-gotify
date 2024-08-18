@@ -1,0 +1,69 @@
+{
+    "plugins\/gotify\/core\/ajax\/gotify.ajax.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "Aucune méthode correspondante à : ": "Nenhum método correspondente a :"
+    },
+    "plugins\/gotify\/core\/class\/gotify.class.php": {
+        "Envoyer": "Enviar",
+        "Message ne peut pas être vide.": "A mensagem não pode estar vazia.",
+        "Tout supprimer": "Eliminar tudo",
+        "Vous devez configurer un token client pour cette action.": "É necessário configurar um token de cliente para esta ação.",
+        "Vous devez configurer un token d\\'application pour cette action.": "É necessário configurar um token de aplicação para esta ação."
+    },
+    "plugins\/gotify\/desktop\/js\/gotify.js": {
+        "Afficher": "Ver",
+        "Choisir une icône": "Escolher um ícone",
+        "Format markdown: obligatoire pour les images": "Formato Markdown: obrigatório para imagens",
+        "Historiser": "História",
+        "Inverser": "Inverter",
+        "Max": "Máximo",
+        "Min": "Min",
+        "Nom de la commande": "Nome do comando",
+        "Supprimer la commande": "Apagar comando",
+        "Tester": "Teste",
+        "Texte brut: images non-supportées": "Texto simples: imagens não suportadas",
+        "Unité": "Unidade"
+    },
+    "plugins\/gotify\/desktop\/php\/gotify.php": {
+        "401 - Accès non autorisé": "401 - Acesso não autorizado",
+        "Actions": "Acções",
+        "Activer": "Ativar",
+        "Ajouter": "Adicionar",
+        "Ajouter une commande de notification": "Adicionar um comando de notificação",
+        "Aucun": "Não",
+        "Catégorie": "Categoria",
+        "Certificat de Gotify": "Certificado Gotify",
+        "Commandes": "Controlos",
+        "Configuration": "Configuração",
+        "Configuration avancée": "Configuração avançada",
+        "Documentation": "Documentação",
+        "Dupliquer": "Duplicar",
+        "Equipement": "Equipamento",
+        "Equipement non visible": "Equipamento não visível",
+        "Equipement visible": "Equipamentos visíveis",
+        "Format": "Formato",
+        "Gestion": "Gestão",
+        "Mes Gotify": "O meu Gotify",
+        "Ne pas vérifier (pas sécurisé)": "Não verificar (não é seguro)",
+        "Nom": "Nome",
+        "Nom de l'équipement": "Nome do equipamento",
+        "Objet parent": "Objeto principal",
+        "Options": "Opções",
+        "Paramètres généraux": "Parâmetros gerais",
+        "Paramètres spécifiques": "Parâmetros específicos",
+        "Priorité": "Prioridade",
+        "Rechercher": "Pesquisar",
+        "Saisir le token": "Introduzir token",
+        "Sauvegarder": "Guardar",
+        "Supprimer": "Eliminar",
+        "Token client (optionnel)": "Token de cliente (opcional)",
+        "Token d'application": "Token de aplicação",
+        "Type": "Tipo de produto",
+        "Visible": "Visível",
+        "Vérifier l'existence d'un nom commun": "Verificar se existe um nome comum",
+        "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Verificar se existe um nome comum e se este corresponde ao nome de anfitrião fornecido (seguro)"
+    },
+    "plugins\/gotify\/plugin_info\/configuration.php": {
+        "URL": "URL"
+    }
+}
