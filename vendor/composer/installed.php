@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '869f46ef9955033ef8eb33ca15d8b99d4f1e6d34',
+    'reference' => '526767255cca0622ea543b857052fcab9f1471d1',
     'name' => 'mips/jeedom-gotify',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '869f46ef9955033ef8eb33ca15d8b99d4f1e6d34',
+      'reference' => '526767255cca0622ea543b857052fcab9f1471d1',
     ),
     'psr/log' => 
     array (

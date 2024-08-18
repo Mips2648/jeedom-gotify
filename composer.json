@@ -7,6 +7,15 @@
             "name": "Mips"
         }
     ],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {},
+        "platform": {
+            "php": "7.4"
+        }
+    },
     "require": {
         "mips/httpclient": "^1.0"
     }
