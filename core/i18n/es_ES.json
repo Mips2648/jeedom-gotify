@@ -45,6 +45,7 @@
         "Gestion": "Administración",
         "Mes Gotify": "Mi Gotify",
         "Ne pas vérifier (pas sécurisé)": "No comprobar (no seguro)",
+        "Nom": "Nombre",
         "Nom de l'équipement": "Nombre del equipo",
         "Objet parent": "Objeto padre",
         "Options": "Opciones",
@@ -58,6 +59,7 @@
         "Token client (optionnel)": "Token de cliente (opcional)",
         "Token d'application": "Ficha de solicitud",
         "Type": "Tipo",
+        "Visible": "Visible",
         "Vérifier l'existence d'un nom commun": "Comprobar la existencia de un sustantivo común",
         "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Compruebe que existe un nombre común y que coincide con el nombre de host suministrado (seguro)"
     },
