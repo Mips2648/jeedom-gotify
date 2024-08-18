@@ -64,6 +64,6 @@
         "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Prüfen, ob es einen gemeinsamen Namen gibt und ob er mit dem bereitgestellten Hostnamen übereinstimmt (sicher)"
     },
     "plugins\/gotify\/plugin_info\/configuration.php": {
-        "URL": "URLs"
+        "URL": "URL"
     }
 }
