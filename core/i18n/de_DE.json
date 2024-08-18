@@ -10,7 +10,6 @@
         "Vous devez configurer un token client pour cette action.": "Sie müssen für diese Aktion ein Kundentoken einrichten.",
         "Vous devez configurer un token d\\'application pour cette action.": "Sie müssen für diese Aktion ein Anwendungs-Token einrichten."
     },
-    "plugins\/gotify\/core\/php\/gotify.inc.php": {},
     "plugins\/gotify\/desktop\/js\/gotify.js": {
         "Afficher": "Anzeige",
         "Choisir une icône": "Wählen Sie ein Symbol",
@@ -66,6 +65,5 @@
     },
     "plugins\/gotify\/plugin_info\/configuration.php": {
         "URL": "URLs"
-    },
-    "plugins\/gotify\/plugin_info\/install.php": {}
+    }
 }
