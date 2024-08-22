@@ -16,10 +16,6 @@ class gotify extends eqLogic {
         $this->setConfiguration('clientToken', utils::encrypt($this->getConfiguration('clientToken')));
     }
 
-    public function preInsert() {
-        $this->setConfiguration('verifyhost', '2');
-    }
-
     public function postInsert() {
         $cmd = new gotifyCmd();
         $cmd->setLogicalId('send');
