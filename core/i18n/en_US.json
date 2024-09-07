@@ -32,7 +32,6 @@
         "Ajouter une commande de notification": "Add a notification command",
         "Aucun": "None",
         "Catégorie": "Category",
-        "Certificat de Gotify": "Gotify certificate",
         "Commandes": "Commands",
         "Configuration": "Setup",
         "Configuration avancée": "Advanced configuration",
@@ -44,7 +43,6 @@
         "Format": "Format",
         "Gestion": "Management",
         "Mes Gotify": "My Gotify",
-        "Ne pas vérifier (pas sécurisé)": "Do not check (not secure)",
         "Nom": "Name",
         "Nom de l'équipement": "Device name",
         "Objet parent": "Parent object",
@@ -59,9 +57,7 @@
         "Token client (optionnel)": "Client token (optional)",
         "Token d'application": "Application token",
         "Type": "Type",
-        "Visible": "Visible",
-        "Vérifier l'existence d'un nom commun": "Check for a common name",
-        "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Check for a common name and verify that it matches the host name provided (secure)"
+        "Visible": "Visible"
     },
     "plugins\/gotify\/plugin_info\/configuration.php": {
         "URL": "Url"
