@@ -39,7 +39,7 @@ class gotify extends eqLogic {
 
     private function getClient($token) {
         $host = config::byKey('url', 'gotify');
-        $client = new HttpClient($host, log::getLogger(__CLASS__));
+        $client = new HttpClient($host);
         $client->getHttpHeaders()->setHeader('X-Gotify-Key', $token);
         return $client;
     }
