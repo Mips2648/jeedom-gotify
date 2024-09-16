@@ -143,16 +143,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">{{Certificat de Gotify}}</label>
-                                <div class="col-sm-9">
-                                    <select class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="verifyhost">
-                                        <option value="2" selected>{{Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)}}</option>
-                                        <option value="1">{{Vérifier l'existence d'un nom commun}}</option>
-                                        <option value="0">{{Ne pas vérifier (pas sécurisé)}}</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </fieldset>
                 </form>

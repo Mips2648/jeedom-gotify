@@ -32,7 +32,6 @@
         "Ajouter une commande de notification": "Einen Benachrichtigungsbefehl hinzufügen",
         "Aucun": "Nein",
         "Catégorie": "Kategorie",
-        "Certificat de Gotify": "Gotify-Zertifikat",
         "Commandes": "Befehle",
         "Configuration": "Konfiguration",
         "Configuration avancée": "Erweiterte Konfiguration",
@@ -44,7 +43,6 @@
         "Format": "Format",
         "Gestion": "Management",
         "Mes Gotify": "Meine Gotify",
-        "Ne pas vérifier (pas sécurisé)": "Nicht überprüfen (nicht sicher)",
         "Nom": "Name",
         "Nom de l'équipement": "Name der Ausrüstung",
         "Objet parent": "Übergeordnetes Objekt",
@@ -59,9 +57,7 @@
         "Token client (optionnel)": "Client-Token (optional)",
         "Token d'application": "Anwendungs-Token",
         "Type": "Typ",
-        "Visible": "Sichtbar",
-        "Vérifier l'existence d'un nom commun": "Überprüfen, ob es einen gemeinsamen Namen gibt",
-        "Vérifier l'existence d'un nom commun et vérifier qu'il correspond avec le nom d'hôte fourni (sécurisé)": "Prüfen, ob es einen gemeinsamen Namen gibt und ob er mit dem bereitgestellten Hostnamen übereinstimmt (sicher)"
+        "Visible": "Sichtbar"
     },
     "plugins\/gotify\/plugin_info\/configuration.php": {
         "URL": "URL"
