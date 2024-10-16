@@ -18,23 +18,24 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
-function InstallComposerDependencies(string $pluginId) {
+function InstallComposerDependencies() {
+    $pluginId = basename(realpath(__DIR__ . '/..'));
     log::add($pluginId, 'info', 'Install composer dependencies');
     $cmd = 'cd ' . __DIR__ . '/../;export COMPOSER_ALLOW_SUPERUSER=1;export COMPOSER_HOME="/tmp/composer";' . system::getCmdSudo() . 'composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader;' . system::getCmdSudo() . ' chown -R www-data:www-data *';
     shell_exec($cmd);
 }
 
 function gotify_install() {
-    $pluginId = 'gotify';
-    InstallComposerDependencies($pluginId);
+    $pluginId = basename(realpath(__DIR__ . '/..'));
+    InstallComposerDependencies();
 
     config::save("api::{$pluginId}::mode", 'disable');
     config::save("api::{$pluginId}::restricted", 1);
 }
 
 function gotify_update() {
-    $pluginId = 'gotify';
-    InstallComposerDependencies($pluginId);
+    $pluginId = basename(realpath(__DIR__ . '/..'));
+    InstallComposerDependencies();
 
     $clientToken = config::byKey('clientToken', $pluginId);
     /** @var gotify */
@@ -57,7 +58,7 @@ function gotify_update() {
 }
 
 function gotify_remove() {
-    $pluginId = 'gotify';
+    $pluginId = basename(realpath(__DIR__ . '/..'));
     config::remove('api', $pluginId);
     config::remove("api::{$pluginId}::mode");
     config::remove("api::{$pluginId}::restricted");
