@@ -25,6 +25,6 @@ function InstallComposerDependencies() {
     shell_exec($cmd);
 }
 
-function gotify_pre_update() {
-    log::add('gotify', 'alert', 'Pre update');
+function gotify_post_update() {
+    log::add('gotify', 'alert', 'post update');
 }
