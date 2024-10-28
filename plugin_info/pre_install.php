@@ -16,11 +16,15 @@
 * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 */
 
-require_once __DIR__  . '/../../../../core/php/core.inc.php';
-/*
- * Non obligatoire mais peut être utilisé si vous voulez charger en même temps que votre
- * plugin des librairies externes (ne pas oublier d'adapter plugin_info/info.xml).
- * 
- * 
- */
+require_once __DIR__ . '/../../../core/php/core.inc.php';
 
+function InstallComposerDependencies() {
+    $pluginId = basename(realpath(__DIR__ . '/..'));
+    log::add($pluginId, 'info', 'Install composer dependencies');
+    $cmd = 'cd ' . __DIR__ . '/../;export COMPOSER_ALLOW_SUPERUSER=1;export COMPOSER_HOME="/tmp/composer";' . system::getCmdSudo() . 'composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader;' . system::getCmdSudo() . ' chown -R www-data:www-data *';
+    shell_exec($cmd);
+}
+
+function gotify_pre_update() {
+    log::add('gotify', 'alert', 'Pre update');
+}
