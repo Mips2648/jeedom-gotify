@@ -25,6 +25,10 @@ function InstallComposerDependencies() {
     shell_exec($cmd);
 }
 
+function gotify_post_market_install() {
+    log::add('gotify', 'alert', 'post install');
+}
+
 function gotify_install() {
     $pluginId = basename(realpath(__DIR__ . '/..'));
     InstallComposerDependencies();
