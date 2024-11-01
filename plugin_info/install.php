@@ -31,7 +31,6 @@ function gotify_post_market_install() {
 
 function gotify_install() {
     $pluginId = basename(realpath(__DIR__ . '/..'));
-    InstallComposerDependencies();
 
     config::save("api::{$pluginId}::mode", 'disable');
     config::save("api::{$pluginId}::restricted", 1);
@@ -39,7 +38,6 @@ function gotify_install() {
 
 function gotify_update() {
     $pluginId = basename(realpath(__DIR__ . '/..'));
-    InstallComposerDependencies();
 
     $clientToken = config::byKey('clientToken', $pluginId);
     /** @var gotify */
