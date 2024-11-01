@@ -26,7 +26,7 @@ function InstallComposerDependencies() {
 }
 
 function gotify_post_market_install() {
-    log::add('gotify', 'alert', 'post install');
+    InstallComposerDependencies();
 }
 
 function gotify_install() {
