@@ -25,7 +25,7 @@ function InstallComposerDependencies() {
     shell_exec($cmd);
 }
 
-function gotify_post_market_install() {
+function gotify_post_plugin_install() {
     InstallComposerDependencies();
 }
 
