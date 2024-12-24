@@ -1,42 +1,41 @@
-<?php return array (
-  'root' => 
-  array (
+<?php return array(
+  'root' => array(
+    'name' => 'mips/jeedom-gotify',
     'pretty_version' => 'dev-master',
     'version' => 'dev-master',
-    'aliases' => 
-    array (
-    ),
-    'reference' => '3db21dd4e48809013d6606ec369012fb318e0f3a',
-    'name' => 'mips/jeedom-gotify',
+    'reference' => '6d319e3b335f8115248722648bbf92ec8617a4b8',
+    'type' => 'library',
+    'install_path' => __DIR__ . '/../../',
+    'aliases' => array(),
+    'dev' => true,
   ),
-  'versions' => 
-  array (
-    'mips/httpclient' => 
-    array (
+  'versions' => array(
+    'mips/httpclient' => array(
       'pretty_version' => 'v1.0',
       'version' => '1.0.0.0',
-      'aliases' => 
-      array (
-      ),
       'reference' => 'fe44ea44d2411aba064c60cca041ee214e2fa737',
+      'type' => 'library',
+      'install_path' => __DIR__ . '/../mips/httpclient',
+      'aliases' => array(),
+      'dev_requirement' => false,
     ),
-    'mips/jeedom-gotify' => 
-    array (
+    'mips/jeedom-gotify' => array(
       'pretty_version' => 'dev-master',
       'version' => 'dev-master',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '3db21dd4e48809013d6606ec369012fb318e0f3a',
+      'reference' => '6d319e3b335f8115248722648bbf92ec8617a4b8',
+      'type' => 'library',
+      'install_path' => __DIR__ . '/../../',
+      'aliases' => array(),
+      'dev_requirement' => false,
     ),
-    'psr/log' => 
-    array (
+    'psr/log' => array(
       'pretty_version' => '1.1.4',
       'version' => '1.1.4.0',
-      'aliases' => 
-      array (
-      ),
       'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
+      'type' => 'library',
+      'install_path' => __DIR__ . '/../psr/log',
+      'aliases' => array(),
+      'dev_requirement' => false,
     ),
   ),
 );
