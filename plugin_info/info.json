@@ -12,7 +12,7 @@
 	"utilization": "Il est nécessaire d'avoir une instance du serveur disponible, celui-ci peut-être installé en docker ou vm... Plus d'info ici : https://gotify.net/docs/install",
 	"licence": "AGPL",
 	"author": "Mips",
-	"require": "4.4",
+	"require": "4.5",
 	"os": {
 		"min": 11
 	},
