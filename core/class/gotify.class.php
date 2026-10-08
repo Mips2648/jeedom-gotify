@@ -115,7 +115,7 @@ class gotifyCmd extends cmd {
         $eqlogic->postMessage($data);
     }
 
-    public function execute($_options = array()) {
+    public function execute($_options = array()): bool {
         switch ($this->getLogicalId()) {
             case 'send':
                 $this->sendMessage($_options);
@@ -126,5 +126,6 @@ class gotifyCmd extends cmd {
                 $eqlogic->deleteMessage();
                 break;
         }
+        return true;
     }
 }
