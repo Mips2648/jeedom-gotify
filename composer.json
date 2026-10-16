@@ -11,12 +11,10 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
-        "allow-plugins": {},
-        "platform": {
-            "php": "7.4"
-        }
+        "allow-plugins": {}
     },
     "require": {
-        "mips/httpclient": "^1.0"
+        "php": "^8.2",
+        "mips/httpclient": "^2.0"
     }
 }
