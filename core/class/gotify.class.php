@@ -37,14 +37,14 @@ class gotify extends eqLogic {
         $cmd->save();
     }
 
-    private function getClient($token) {
+    private function getClient(string $token): HttpClient {
         $host = config::byKey('url', 'gotify');
-        $client = new HttpClient($host);
+        $client = new HttpClient($host, log::getLogger(__CLASS__));
         $client->getHttpHeaders()->setHeader('X-Gotify-Key', $token);
         return $client;
     }
 
-    public function deleteMessage() {
+    public function deleteMessage(): void {
         $token = $this->getConfiguration('clientToken');
         if ($token == '') {
             throw new RuntimeException(__('Vous devez configurer un token client pour cette action.', __FILE__));
@@ -56,7 +56,7 @@ class gotify extends eqLogic {
         }
     }
 
-    public function postMessage($data) {
+    public function postMessage(array $data): void {
         $token = $this->getConfiguration('appToken');
         if ($token == '') {
             throw new RuntimeException(__('Vous devez configurer un token d\'application pour cette action.', __FILE__));
@@ -71,7 +71,7 @@ class gotify extends eqLogic {
 
 class gotifyCmd extends cmd {
 
-    public function dontRemoveCmd() {
+    public function dontRemoveCmd(): bool {
         return $this->getLogicalId() == 'delete';
     }
 
